@@ -163,16 +163,13 @@ public class RippleView extends RelativeLayout {
                 timer = 0;
                 durationEmpty = -1;
                 timerEmpty = 0;
+                canvas.save();
                 canvas.restore();
                 invalidate();
                 if (onCompletionListener != null) onCompletionListener.onComplete(this);
                 return;
             } else
                 canvasHandler.postDelayed(runnable, frameRate);
-
-            if (timer == 0)
-                canvas.save();
-
 
             canvas.drawCircle(x, y, (radiusMax * (((float) timer * frameRate) / rippleDuration)), paint);
 
